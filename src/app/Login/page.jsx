@@ -96,7 +96,7 @@ export default function Page() {
         });
 
         setTimeout(() => {
-          router.push(`/Verify-Otp?email=${formData.email}`);
+          router.push(`/verify-otp?email=${formData.email}`);
         }, 1600);
       }
     } catch (error) {
