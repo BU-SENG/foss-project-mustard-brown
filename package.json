@@ -1,0 +1,43 @@
+{
+  "name": "opentask",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "axios": "^1.12.2",
+    "bcryptjs": "^3.0.2",
+    "chart.js": "^4.5.1",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.24",
+    "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "mongoose": "^8.19.1",
+    "next": "15.5.5",
+    "nodemailer": "^7.0.9",
+    "react": "19.1.0",
+    "react-chartjs-2": "^5.3.1",
+    "react-countup": "^6.5.3",
+    "react-dom": "19.1.0",
+    "react-icons": "^5.5.0",
+    "react-loader-spinner": "^7.0.3",
+    "react-responsive": "^10.0.1",
+    "react-select": "^5.10.2",
+    "recharts": "^3.4.1",
+    "sweetalert2": "^11.26.2",
+    "swiper": "^12.0.2"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.5",
+    "tailwindcss": "^4"
+  }
+}
