@@ -40,7 +40,7 @@ export async function POST(req) {
       },
     });
 
-    const verifyURL = `${process.env.NEXT_PUBLIC_BASE_URL}/Verify?token=${token}`;
+    const verifyURL = `${process.env.NEXT_PUBLIC_BASE_URL}/verify?token=${token}`;
 
     await transporter.sendMail({
       from: `"OpenTask" <${process.env.EMAIL_USER}>`,

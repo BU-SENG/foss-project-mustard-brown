@@ -62,7 +62,7 @@ export default function page() {
         text:
           error.response?.data?.message ||
           error.message ||
-          "An error occurred while creating the vendor account",
+          "An error occurred while creating the account",
       });
     } finally {
       setIsLoading(false);
