@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import VerifyOTPContent from "./VerifyOTPContent"; // We'll create this file in 5 seconds
 
+export const dynamic = 'force-dynamic';
+
 export default function VerifyOtpPage() {
   return (
     <Suspense
