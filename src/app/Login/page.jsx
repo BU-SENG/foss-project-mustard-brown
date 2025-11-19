@@ -229,7 +229,7 @@ export default function Page() {
 
           <div className="w-full text-center mt-4">
             <button
-              type="button"
+              type="submit"
               className="py-2.5 text-sm font-semibold px-6 w-full rounded-lg flex items-center justify-center gap-2 bg-white text-[#4285F4] border border-gray-300 hover:bg-gray-50 transition"
               onClick={() => (window.location.href = "/api/login/google")} // Adjust path if yours is different
             >
