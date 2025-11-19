@@ -233,9 +233,10 @@ export default function Page() {
 
           <div className="w-full text-center mt-2">
             <button
-              type="submit"
-              className="py-2.5 text-sm font-semibold px-6 w-full rounded-lg flex items-center justify-center gap-2 bg-white text-[#4285F4] border border-gray-300 hover:bg-gray-50 transition"
-              onClick={() => (window.location.href = "/api/login/google")} // Adjust path if yours is different
+              type="button"
+              className="py-2.5 text-sm font-semibold px-6 w-full rounded-lg flex items-center justify-center gap-2 bg-white border border-gray-300 hover:bg-gray-50 transition-all
+             bg-gradient-to-r from-[#f2521e] to-[#9f00ff] bg-clip-text text-transparent"
+              onClick={() => (window.location.href = "/api/login/google")}
             >
               <img
                 src="/google-logo.png"

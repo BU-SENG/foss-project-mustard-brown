@@ -226,14 +226,24 @@ export default function page() {
                 )}
               </button>
             </div>
-            {/* <div className="w-full mt-4 relative flex items-center justify-center">
-            <div className="w-full border-[0.1px] border-gray-200"></div>
-            <p className="absolute text-xs bg-white px-4 text-gray-500">OR COUNTINUE WITH</p>
-          </div>
-          <div className="flex gap-4 w-full mt-4">
-            <div className="w-full"><button className="text-sm rounded-lg flex gap-3 items-center justify-center w-full border-1 py-2.5 px-6"><FaGoogle/> Google</button></div>
-            <div className="w-full"><button className="text-sm rounded-lg flex gap-3 items-center justify-center w-full border-1 py-2.5 px-6"><FaGithub/> GitHub</button></div>
-          </div> */}
+            <div className="w-full mt-4 relative flex items-center justify-center">
+              <div className="w-full border-[0.1px] border-gray-200"></div>
+              <p className="absolute text-xs bg-white px-4 text-gray-500">
+                OR CONTINUE WITH
+              </p>
+            </div>
+            {/* <div className="flex gap-4 w-full mt-4">
+              <div className="w-full">
+                <button className="text-sm rounded-lg flex gap-3 items-center justify-center w-full border-1 py-2.5 px-6">
+                  <FaGoogle /> Google
+                </button>
+              </div>
+              <div className="w-full">
+                <button className="text-sm rounded-lg flex gap-3 items-center justify-center w-full border-1 py-2.5 px-6">
+                  <FaGithub /> GitHub
+                </button>
+              </div>
+            </div> */}
             <div className="w-full flex items-center justify-center mt-4">
               <p className="text-xs text-gray-400">
                 Already have an account?{" "}

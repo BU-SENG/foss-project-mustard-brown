@@ -4,3 +4,4 @@ import passport from "passport";
 export default function handler(req, res) {
   passport.authenticate("google", { scope: ["profile", "email"] })(req, res);
 }
+    
