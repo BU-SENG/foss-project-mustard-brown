@@ -7,7 +7,7 @@ import DBconnect from "@/Utils/DBconnect";
 import ProjectModel from "@/Models/Projects";
 import TaskModel from "@/Models/Tasks";
 
-// POST - Create a new project
+// POST - Create a New Project
 export async function POST(req) {
   try {
     await DBconnect();
