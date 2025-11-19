@@ -207,8 +207,12 @@ export default function Page() {
             )}
           </div>
 
+          <div>
+            <Link href={"/forgot-password"} className="text-xs text-blue-500">Forgot Password</Link>
+          </div>
+
           {/* Submit Button */}
-          <div className="mt-4 w-full">
+          <div className="mt-2 w-full">
             <button
               type="submit"
               disabled={isLoading}
@@ -227,7 +231,7 @@ export default function Page() {
             </button>
           </div>
 
-          <div className="w-full text-center mt-4">
+          <div className="w-full text-center mt-2">
             <button
               type="submit"
               className="py-2.5 text-sm font-semibold px-6 w-full rounded-lg flex items-center justify-center gap-2 bg-white text-[#4285F4] border border-gray-300 hover:bg-gray-50 transition"
