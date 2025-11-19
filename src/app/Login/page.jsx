@@ -227,6 +227,21 @@ export default function Page() {
             </button>
           </div>
 
+          <div className="w-full text-center mt-4">
+            <button
+              type="button"
+              className="py-2.5 text-sm font-semibold px-6 w-full rounded-lg flex items-center justify-center gap-2 bg-white text-[#4285F4] border border-gray-300 hover:bg-gray-50 transition"
+              onClick={() => (window.location.href = "/api/login/google")} // Adjust path if yours is different
+            >
+              <img
+                src="/google-logo.png"
+                alt="Google logo"
+                className="w-5 h-5 mr-2"
+              />
+              Sign in with Google
+            </button>
+          </div>
+
           {/* Sign Up Link */}
           <div className="w-full text-center mt-4">
             <p className="text-xs text-gray-400">
