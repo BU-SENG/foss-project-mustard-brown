@@ -43,6 +43,7 @@ export default function page() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // handle submit logic
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!Validate()) return;
