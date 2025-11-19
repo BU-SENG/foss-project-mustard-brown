@@ -3,30 +3,32 @@ import User from "@/Models/User";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
-import nodemailer from "nodemailer";
+import { sendMail } from "@/Utils/sendMail";
 
 export async function POST(req) {
   try {
     await DBconnect();
-    const body = await req.json();
-    const { fullName, email, password } = body;
+    const { fullName, email, password } = await req.json();
 
-    const UserExists = await User.findOne({ email });
-    if (UserExists) {
+    // Check if user exists
+    const userExists = await User.findOne({ email });
+    if (userExists) {
       return NextResponse.json(
-        { message: "This User already exists" },
+        { message: "This user already exists" },
         { status: 400 }
       );
     }
 
-
-    // Sign up logic
+    // Hash password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Generate verification token (inline JWT)
     const token = jwt.sign({ email }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
 
+    // Create user
     const newUser = await User.create({
       fullName,
       email,
@@ -34,32 +36,29 @@ export async function POST(req) {
       verificationToken: token,
     });
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
+    // Verification link
     const verifyURL = `${process.env.NEXT_PUBLIC_BASE_URL}/verify?token=${token}`;
 
-    await transporter.sendMail({
-      from: `"OpenTask" <${process.env.EMAIL_USER}>`,
+    // Send verification email using reusable utility
+    await sendMail({
       to: email,
       subject: "Verify your email",
-      html: `
-        <h2>Hello ${fullName},</h2>
-        <p>Please verify your email by clicking the link below:</p>
-        <a href="${verifyURL}" style="color:blue;">Verify Email</a>
-      `,
+      fullname: fullName,
+      intro: [
+        `Hello ${fullName},`,
+        "Welcome to OpenTask! Please verify your email by clicking the button below.",
+      ],
+      btnText: "Verify Email",
+      instructions:
+        "Click the button to verify your account. Link expires in 24 hours.",
+      link: verifyURL,
     });
 
     return NextResponse.json({ success: true, user: newUser }, { status: 200 });
   } catch (error) {
     console.error("Error in register API:", error);
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      { error: "Internal Server Error", details: error.message },
       { status: 500 }
     );
   }
@@ -70,20 +69,19 @@ export async function GET(req) {
   try {
     await DBconnect();
 
-    // Get auth token from cookies
     const token = req.cookies.get("authToken")?.value;
     if (!token) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    // Decode token to identify current user
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const currentUserId = decoded.id;
 
-    // Fetch all users except the current one
-    const users = await User.find({ _id: { $ne: currentUserId } }, "_id fullName email");
+    const users = await User.find(
+      { _id: { $ne: currentUserId } },
+      "_id fullName email"
+    );
 
-    // Return as a raw array (same as before)
     return NextResponse.json(users, { status: 200 });
   } catch (error) {
     console.error("Error fetching users:", error);
