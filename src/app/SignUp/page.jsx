@@ -51,7 +51,7 @@ export default function page() {
       const response = await axios.post("/api/user", formData);
       if (response.status === 200) {
         setIsLoading(false);
-        // Handle success (e.g., show a success message, redirect, etc.)
+        // Handle success (e.g., show a success message, redirect, etc.).
 
         setExchange(true);
       }
