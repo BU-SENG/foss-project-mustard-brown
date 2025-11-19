@@ -20,6 +20,7 @@ export default function page() {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [exchange, setExchange] = useState(false);
+  const [savedEmail, setSavedEmail] = useState(""); // New state for saved email
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,10 +50,10 @@ export default function page() {
     try {
       const response = await axios.post("/api/user", formData);
       if (response.status === 200) {
-        setIsLoading(false);
-        // Handle success (e.g., show a success message, redirect, etc.).
+        setSavedEmail(formData.email); // <-- REQUIRED
+        setExchange(true); // swap to email verification screen
 
-        setExchange(true);
+        setIsLoading(false);
       }
     } catch (error) {
       setIsLoading(false);
@@ -73,7 +74,7 @@ export default function page() {
     try {
       setIsLoading(true);
       const response = await axios.post("/api/resend-verification", {
-        email: formData.email,
+        email: savedEmail,
       });
       Swal.fire({
         icon: "success",
