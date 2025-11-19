@@ -1,4 +1,4 @@
-// app/api/dashboard/route.js   ← FINAL VERSION THAT WORKS 100%
+// app/api/dashboard/route.js   
 
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
@@ -140,3 +140,4 @@ export async function GET(req) {
     return NextResponse.json({ error: "Server Error" }, { status: 500 });
   }
 }
+
