@@ -1,81 +1,99 @@
+// /Utils/sendMail.js
 import nodemailer from "nodemailer";
 import Mailgen from "mailgen";
 import createHttpError from "http-errors";
 
-export const sendMail = async ({
+let transporter = null; // cache transporter instance
+
+export async function sendMail({
   to,
   subject,
-  intro,
-  fullname,
-  btnText,
-  instructions,
-  link,
-}) => {
+  intro = [],
+  fullname = "User",
+  btnText = "Open",
+  instructions = "",
+  link = process.env.CLIENT_URL,
+}) {
+  // Validate basic input
   if (!to || !subject || !intro) {
-    throw createHttpError(500, "Email receipient, subject or intro is missing");
+    throw createHttpError(
+      400,
+      "Email recipient, subject, or intro is missing."
+    );
   }
+
+  // Validate env
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    throw createHttpError(500, "Email service not properly configured.");
+  }
+
   try {
+    // Create transporter only once
+    if (!transporter) {
+      transporter = nodemailer.createTransport({
+        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
+        },
+      });
+
+      // Verify once on startup
+      await transporter.verify().catch((error) => {
+        throw createHttpError(
+          500,
+          `Failed to connect to email service: ${error.message}`
+        );
+      });
+    }
+
+    // Mailgen Setup
     const mailGenerator = new Mailgen({
       theme: "default",
       product: {
         name: "OpenTask",
-        link:
-          process.env.CLIENT_URL || "https://instaclone-self-six.vercel.app",
+        link: process.env.CLIENT_URL || "https://opentask.vercel.app",
       },
     });
+
+    // Email structure
     const email = {
       body: {
         name: fullname,
         intro,
         action: {
           instructions:
-            instructions ||
-            "To get started with Instashots, please click the button below",
+            instructions || "Please click the button below to proceed.",
           button: {
-            text: btnText || "Visit",
-            link: link || process.env.CLIENT_URL,
+            color: "#32a852",
+            text: btnText,
+            link,
           },
         },
-        outro: "Need help, or have questions? Reply to this email",
+        outro: "If you have any questions, simply reply to this email.",
       },
     };
+
     const emailBody = mailGenerator.generate(email);
-    //validate smtp config
-    if (!process.env.EMAIL || !process.env.EMAIL_PASSWORD) {
-      throw createHttpError(500, "Email service not properly configured");
-    }
-    //create transporter
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.EMAIL,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
-    //connecting to gmail service
-    await transporter.verify().catch((error) => {
-      throw createHttpError(
-        500,
-        `Failed to connect to email service: ${error.message}`
-      );
-    });
-    //send email
+
+    // Send mail
     const info = await transporter.sendMail({
-      from: "Instashots",
-      to: to,
-      subject: subject,
+      from: `"OpenTask" <${process.env.EMAIL_USER}>`,
+      to,
+      subject,
       html: emailBody,
     });
+
     return {
       success: true,
       message: "Email sent successfully",
       messageId: info.messageId,
     };
   } catch (error) {
-    console.error("Email servise error", error);
-    throw createHttpError(500, "Failed to send email. Try again");
+    console.error("Email service error:", error);
+    throw createHttpError(500, "Failed to send email. Try again.");
   }
-};
+}
