@@ -55,7 +55,7 @@ export async function GET(req) {
       .sort({ createdAt: -1 })
       .lean();
 
-    // Stats
+    // Status
     const todo = tasks.filter((t) => t.status === "To Do").length;
     const pending = tasks.filter((t) => t.status === "Pending").length;
     const completed = tasks.filter((t) => t.status === "Completed").length;
