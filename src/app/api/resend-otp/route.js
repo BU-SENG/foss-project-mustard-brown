@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import DBconnect from "@/Utils/DBconnect";
 import UserModel from "@/Models/User";
-import nodemailer from "nodemailer";
+import { sendMail } from "@/Utils/sendMail";
 
 export async function POST(req) {
   try {
@@ -26,28 +26,19 @@ export async function POST(req) {
     user.otp = otpCode;
     user.otpExpires = otpExpiry;
     await user.save();
-
-    // Send OTP via email
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    const mailOptions = {
-      from: `"OpenTask" <${process.env.EMAIL_USER}>`,
+    
+    // Send OTP via email using reusable utility
+    await sendMail({
       to: user.email,
       subject: "Your OTP Code",
-      html: `<div style="font-family:Arial,sans-serif;padding:20px">
-          <h1 style="background:#f5f5f5;display:inline-block;padding:10px 20px;border-radius:8px;">${otpCode}</h1>
-          <p>This code will expire in <b>5 minutes</b>.</p>
-          <p>If you didn’t request this, please ignore this email.</p>
-        </div>`,
-    };
-
-    await transporter.sendMail(mailOptions);
+      fullname: user.fullName || user.email,
+      intro: [
+        `Hello ${user.fullName || user.email},`,
+        `Your OTP code for login is:`,
+      ],
+      btnText: otpCode,
+      instructions: "This code will expire in 5 minutes. If you didn’t request this, please ignore this email."
+    });
 
     return NextResponse.json(
       { message: "OTP resent successfully" },

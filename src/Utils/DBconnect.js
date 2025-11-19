@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const mongoUrl = process.env.MONGODB_URL;
 
 if (!mongoUrl) {
-  throw new Error("MONGO_URI environment variable is not defined");
+  throw new Error("MONGO_URL environment variable is not defined");
 }
 
 let connection = {};

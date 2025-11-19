@@ -7,3 +7,4 @@ export const generateAccessToken = (
 ) => {
   return jwt.sign(payload, secretKey, options);
 };
+-
