@@ -9,10 +9,10 @@ export async function sendMail({
   to,
   subject,
   intro = [],
-  fullname = "User",
-  btnText = "Open",
+  fullname,
+  btnText,
   instructions = "",
-  link = process.env.CLIENT_URL,
+  link,
 }) {
   // Validate basic input
   if (!to || !subject || !intro) {
@@ -55,7 +55,7 @@ export async function sendMail({
       theme: "default",
       product: {
         name: "OpenTask",
-        link: process.env.CLIENT_URL || "https://foss-project-mustard-brown.vercel.app/",
+        link: process.env.NEXT_PUBLIC_BASE_URL || "https://foss-project-mustard-brown.vercel.app/",
       },
     });
 
@@ -69,7 +69,7 @@ export async function sendMail({
             instructions || "Please click the button below to proceed.",
           button: {
             color: "#32a852",
-            text: btnText,
+            text: btnText || "Visit",
             link,
           },
         },
