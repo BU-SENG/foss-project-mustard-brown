@@ -142,7 +142,7 @@ export default function Home() {
     <div className="min-h-screen w-full flex flex-col relative font-poppins">
       <nav
         id="hero"
-        className={`flex items-center justify-between px-4 md:px-10 py-3 shadow-lg relative z-10 bg-white transition-all duration-500 ${
+        className={`flex items-center sticky top-0 justify-between px-4 md:px-10 py-3 shadow-lg relative z-10 bg-white transition-all duration-500 ${
           open ? "translate-y-2" : "translate-y-0"
         }`}
       >
@@ -191,16 +191,16 @@ export default function Home() {
           </ul>
         </div>
 
-        
+
         {/* Desktop Buttons */}
-        <div className="text-xs gap-4 md:flex items-center justify-center hidden">
+        <div className="text-xs gap-4 md:flex items-center justify-center  hidden">
           <Link href={"/Login"}>
-            <button className="px-6 py-2.5 font-semibold border-1 border-gray-600 rounded-lg">
+            <button className="px-6 py-2.5 font-semibold border-1 border-gray-600 hover:cursor-pointer hover:bg-gray-200 rounded-lg">
               Log In
             </button>
           </Link>
           <Link href={"/SignUp"}>
-            <button className="px-6 py-2.5 bg-gradient-to-tl from-[#9024ec] to-[#e2542c] rounded-lg text-white font-semibold">
+            <button className="px-6 py-2.5 bg-gradient-to-tl from-[#9024ec] to-[#e2542c] hover:cursor-pointer rounded-lg text-white font-semibold">
               Get Started
             </button>
           </Link>
@@ -313,13 +313,15 @@ export default function Home() {
         </div>
         <div className="flex flex-col md:flex-row gap-4 w-full md:w-fit text-sm mb-18 md:mb-10">
           <Link href={"/SignUp"}>
-            <button className="px-8 py-3 border-1 rounded-lg w-full md:w-fit flex items-center justify-center gap-2 hover:gap-4 transition-all duration-300 bg-gradient-to-r from-[#9024ec] to-[#e2542c] text-white font-semibold">
+            <button className="px-8 py-3 hover:cursor-pointer border-1 rounded-lg w-full md:w-fit flex items-center justify-center gap-2 hover:gap-4 transition-all duration-300 bg-gradient-to-r from-[#9024ec] to-[#e2542c] text-white font-semibold">
               Get Started Free <GoArrowRight />
             </button>
           </Link>
-          <button className="px-8 py-3 border-1 rounded-lg w-full md:w-fit border-gray-600 font-semibold">
+          <Link 
+            href="#features"
+          className="px-8 py-3 hover:cursor-pointer hover:bg-gray-200 border-1 rounded-lg w-full md:w-fit border-gray-600 font-semibold">
             Explore Feature
-          </button>
+          </Link>
         </div>
         <div className="w-full p-6 max-w-5xl rounded-xl border-1 shadow-[0_0_25px_#f900ff33,0_0_50px_#f2521e33] bg-white/20 backdrop-blur-md border-white/20">
           <div className="pb-3 border-b-1 border-[#eeeaef] w-full flex items-center justify-between">
@@ -608,13 +610,13 @@ export default function Home() {
 
           {/* CTA Button */}
           <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-4">
-            <button className="w-full md:w-fit text-sm px-10 py-3 rounded-xl text-white font-semibold bg-gradient-to-r from-[#9F00FF] to-[#F2521E] hover:opacity-90 transition-all duration-300 flex gap-2 items-center justify-center">
+            <Link 
+              href={"/SignUp"}
+            className="w-full hover:cursor-pointer md:w-fit text-sm px-10 py-3 rounded-xl text-white font-semibold bg-gradient-to-r from-[#9F00FF] to-[#F2521E] hover:opacity-90 transition-all duration-300 flex gap-2 items-center justify-center">
               Start Free
               <GoArrowRight />
-            </button>
-            <button className="w-full md:w-fit text-sm px-10 py-3 rounded-xl text-black font-semibold border border-gray-600 hover:opacity-90 transition-all duration-300 flex gap-2 items-center justify-center">
-              Learn More
-            </button>
+            </Link>
+            
           </div>
         </div>
       </section>
