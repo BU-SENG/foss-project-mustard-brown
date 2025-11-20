@@ -1,4 +1,4 @@
-📘 Collaborative Task Management Web App
+#OpenTask - Collaborative Task Management Web App
 
 A web-based platform that enables teams to create, assign, and track tasks in real time, improving coordination and workflow management.
 The system helps users organize their workflow efficiently, ensuring transparency, accountability, and seamless collaboration across teams.
