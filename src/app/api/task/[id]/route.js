@@ -21,8 +21,7 @@ export async function GET(request, context) {
   if (!mongoose.Types.ObjectId.isValid(id))
     return NextResponse.json({ error: "Invalid task ID" }, { status: 400 });
 
-  await DBconnect();
-
+  await DBconnect();//Database connection
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const userId = decoded.id;
