@@ -3,8 +3,7 @@ Organize teams, track progress, and ship faster with a beautiful, real-time task
 
 OpenTask is a full-stack web application that lets teams create, assign, and track tasks in real time. Built for students, startups, and remote teams, it combines the simplicity of Trello with real-time updates, role-based access, email/Google login, notifications, and a clean responsive UI all in one easy-to-deploy package.
 
-
-
+<br><br>
 
 <div align="center">
 
@@ -17,6 +16,7 @@ OpenTask is a full-stack web application that lets teams create, assign, and tra
 
 </div>
 
+<br><br>
 
 ## ✨ Key Features
 
@@ -29,6 +29,7 @@ OpenTask is a full-stack web application that lets teams create, assign, and tra
 - Email + Google OAuth authentication
 - Fully responsive (mobile + desktop)
 
+<br><br>
 
 ## 🛠 Tech Stack
 
@@ -44,28 +45,30 @@ OpenTask is a full-stack web application that lets teams create, assign, and tra
 | Deployment        | Vercel                              |
 | Others            | SweetAlert2, Axios, React Icons     |
 
+<br><br>
 
+## 📂 Project Structure
 
-
-
-
-📂 Project Structure (Summary)
-
-/public
-/src
-  /app
-  /Components
-  /Constants
-  /Models
-  /Utils
-.eslint.config.mjs
-.jsconfig.json
-.next.config.mjs
-.postcss.config.mjs
-/package.json
-/package-lock.json
-/tailwind.config.js
-/.env.local
+```plaintext
+├─ 📂 .next/                  # Auto-generated build folder
+├─ 📂 node_modules/           # Dependencies
+├─ 📂 public/                 # Static files (logos, icons)
+├─ 📂 src/
+│  ├─ 📂 app/                 # Pages, layouts & API routes (App Router)
+│  ├─ 📂 Components/          # Reusable UI components
+│  ├─ 📂 Constants/           # Enums & config values
+│  ├─ 📂 Models/              # MongoDB schemas
+│  ├─ 📂 Utils/               # Helpers & utilities
+│  └─ 📂 UIUX Design/         # Figma / design files
+├─ 🔒 .env                    # Secret keys (never commit!)
+├─ 📄 .env.example            # Public env template
+├─ 🚫 .gitignore
+├─ 🧹 eslint.config.mjs
+├─ 🛠  jsconfig.json
+├─ ⚙️  next.config.mjs
+├─ 🎨 postcss.config.mjs
+├─ 📦 package.json
+└─ 📖 README.md
 
 
 
