@@ -142,7 +142,7 @@ export default function Home() {
     <div className="min-h-screen w-full flex flex-col relative font-poppins">
       <nav
         id="hero"
-        className={`flex items-center sticky top-0 justify-between px-4 md:px-10 py-3 shadow-lg relative z-10 bg-white transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 flex items-center justify-between px-4 md:px-10 py-3 shadow-lg z-50 bg-white transition-all duration-500 ${
           open ? "translate-y-2" : "translate-y-0"
         }`}
       >
@@ -248,14 +248,14 @@ export default function Home() {
         >
           FAQ
         </Link>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm w-full">
           <Link href={"/Login"}>
-            <button className="px-6 py-2.5 font-semibold border-1 rounded-lg border-gray-600 ">
+            <button className="w-full px-6 py-2.5 font-semibold border-1 rounded-lg border-gray-600 ">
               Log In
             </button>
           </Link>
           <Link href={"/SignUp"}>
-            <button className="px-6 py-2.5 bg-gradient-to-tl from-[#9F00FF] to-[#F2521E] rounded-lg text-white font-semibold">
+            <button className="w-full px-6 py-2.5 bg-gradient-to-tl from-[#9F00FF] to-[#F2521E] rounded-lg text-white font-semibold">
               Get Started
             </button>
           </Link>
@@ -319,7 +319,7 @@ export default function Home() {
           </Link>
           <Link 
             href="#features"
-          className="px-8 py-3 hover:cursor-pointer hover:bg-gray-200 border-1 rounded-lg w-full md:w-fit border-gray-600 font-semibold">
+          className="px-8 py-3 hover:cursor-pointer hover:bg-gray-200 border-1 rounded-lg w-full md:w-fit border-gray-600 font-semibold flex items-center justify-center">
             Explore Feature
           </Link>
         </div>
