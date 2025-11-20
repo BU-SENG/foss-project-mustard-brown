@@ -1,7 +1,7 @@
-#OpenTask - Collaborative Task Management Web App
+# **OpenTask – Real-Time Collaborative Task Management Web App**
+### Organize teams, track progress, and ship faster with a beautiful, real-time task board
 
-A web-based platform that enables teams to create, assign, and track tasks in real time, improving coordination and workflow management.
-The system helps users organize their workflow efficiently, ensuring transparency, accountability, and seamless collaboration across teams.
+### **OpenTask** is a full-stack, open-source web application that lets teams create, assign, and track tasks in real time. Built for students, startups, and remote teams, it combines the simplicity of Trello with real-time updates, role-based access, email/Google login, notifications, and a clean responsive UI — all in one easy-to-deploy package.
 
 🚀 Features
 👥 User Features
