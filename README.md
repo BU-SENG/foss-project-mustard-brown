@@ -116,33 +116,47 @@ npm run build   # Build the app
 npm start       # Start production server
 ```
 
+<br><br>
+
+<br><br><br>
+
+## 🌍 Deploy on Vercel (One-Click, Zero Config)
+
+The easiest and fastest way to deploy OpenTask:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/BU-SENG/foss-project-mustard-brown)
+
+### Manual Steps (if the button doesn’t work)
+1. Go to [vercel.com](https://vercel.com)
+2. Click **"New Project"** → Import this GitHub repo
+3. Add these Environment Variables (same as your `.env.local`):
+   - `MONGODB_URI`
+   - `EMAIL_USER`
+   - `EMAIL_PASS`
+   - `NEXT_PUBLIC_BASE_URL` → set to your Vercel URL (e.g., https://opentask-yourname.vercel.app)
+   - `JWT_SECRET`
+   - `GOOGLE_CLIENT_ID`
+   - `GOOGLE_CLIENT_SECRET`
+4. Click **Deploy** → Done in ~60 seconds!
+
+Your live app will be at: `https://your-project-name.vercel.app`
+
+<br><br>
+
+## 👥 Contributors – The Amazing Team
+
+22/0250 NDUBUISI MIRACLE DAVID
+23/0221 NELSON-NWANONEZE DAVID TOCHUKWU
+23/0220 NELSON-NWANONEZE SAMUEL SOMTOCHUKWU
+22/0244 NGONADI CHINONSO MICHAEL
+22/0020 NWAGBO SOMTOMCHUKWU BILL
+22/0037 NWAKWURIBE KAMSIYOCHI DENNIS
+22/0291 NWALUE PRECIOUS SHAWN
+22/0256 NWANGWU ONYEDIKACHUKWU VINCENT
+22/0013 NZEGWU KENECHUKWU ANALIEFO
+22/3286 NZERIBE CHINANU UZOCHUKWU
+
 <br>
-
-
-🌍 Deployment (Vercel)
-
-Push your project to GitHub
-
-Visit https://vercel.com
-
-Import the repository and configure environment variables under
-Project Settings → Environment Variables
-
-Click Deploy 
-
-
-
-🤝 Contributors
-22/0250	NDUBUISI MIRACLE DAVID
-23/0221	NELSON-NWANONEZE DAVID TOCHUKWU
-23/0220	NELSON-NWANONEZE SAMUEL SOMTOCHUKWU
-22/0244	NGONADI CHINONSO MICHAEL
-22/0020	NWAGBO SOMTOMCHUKWU BILL
-22/0037	NWAKWURIBE KAMSIYOCHI DENNIS
-22/0291	NWALUE PRECIOUS SHAWN
-22/0256	NWANGWU ONYEDIKACHUKWU VINCENT
-22/0013	NZEGWU KENECHUKWU ANALIEFO
-22/3286	NZERIBE CHINANU UZOCHUKWU
 
 📬 Support
 For inquiries, feedback, or contributions, please open an issue or submit a pull request on GitHub.
