@@ -1,5 +1,4 @@
 # **OpenTask – Real-Time Collaborative Task Management Web App**
-Organize teams, track progress, and ship faster with a beautiful, real-time task board
 
 OpenTask is a full-stack web application that lets teams create, assign, and track tasks in real time. Built for students, startups, and remote teams, it combines the simplicity of Trello with real-time updates, role-based access, email/Google login, notifications, and a clean responsive UI all in one easy-to-deploy package.
 
@@ -145,20 +144,21 @@ Your live app will be at: `https://your-project-name.vercel.app`
 
 ## 👥 Contributors – The Amazing Team
 
-22/0250 NDUBUISI MIRACLE DAVID
-23/0221 NELSON-NWANONEZE DAVID TOCHUKWU
-23/0220 NELSON-NWANONEZE SAMUEL SOMTOCHUKWU
-22/0244 NGONADI CHINONSO MICHAEL
-22/0020 NWAGBO SOMTOMCHUKWU BILL
-22/0037 NWAKWURIBE KAMSIYOCHI DENNIS
-22/0291 NWALUE PRECIOUS SHAWN
-22/0256 NWANGWU ONYEDIKACHUKWU VINCENT
-22/0013 NZEGWU KENECHUKWU ANALIEFO
+22/0250 NDUBUISI MIRACLE DAVID<br>
+23/0221 NELSON-NWANONEZE DAVID TOCHUKWU<br>
+23/0220 NELSON-NWANONEZE SAMUEL SOMTOCHUKWU<br>
+22/0244 NGONADI CHINONSO MICHAEL<br>
+22/0020 NWAGBO SOMTOMCHUKWU BILL<br>
+22/0037 NWAKWURIBE KAMSIYOCHI DENNIS<br>
+22/0291 NWALUE PRECIOUS SHAWN<br>
+22/0256 NWANGWU ONYEDIKACHUKWU VINCENT<br>
+22/0013 NZEGWU KENECHUKWU ANALIEFO<br>
 22/3286 NZERIBE CHINANU UZOCHUKWU
 
 <br>
 
-📬 Support
+## 📬 Support
+
 For inquiries, feedback, or contributions, please open an issue or submit a pull request on GitHub.
 
 Persistent data storage and real-time updates
