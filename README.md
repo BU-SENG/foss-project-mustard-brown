@@ -1,10 +1,19 @@
 # **OpenTask – Real-Time Collaborative Task Management Web App**
 Organize teams, track progress, and ship faster with a beautiful, real-time task board
 
-OpenTask is a full-stack, open-source web application that lets teams create, assign, and track tasks in real time. Built for students, startups, and remote teams, it combines the simplicity of Trello with real-time updates, role-based access, email/Google login, notifications, and a clean responsive UI — all in one easy-to-deploy package.
+OpenTask is a full-stack web application that lets teams create, assign, and track tasks in real time. Built for students, startups, and remote teams, it combines the simplicity of Trello with real-time updates, role-based access, email/Google login, notifications, and a clean responsive UI all in one easy-to-deploy package.
 
 
-![OpenTask Dashboard](https://github.com/BU-SENG/foss-project-mustard-brown/blob/main/dashboardoss.jpg)
+<div align="center">
+
+<img src="https://github.com/BU-SENG/foss-project-mustard-brown/blob/main/landingpageOS.jpg?raw=true" width="48%"/>
+<img src="https://github.com/BU-SENG/foss-project-mustard-brown/blob/main/dashboardoss.jpg?raw=true" width="48%"/>
+
+<img src="https://github.com/BU-SENG/foss-project-mustard-brown/blob/main/projectpageoss.jpg?raw=true" width="31%"/>
+<img src="https://github.com/BU-SENG/foss-project-mustard-brown/blob/main/teamsoss.jpg?raw=true" width="31%"/>
+<img src="https://github.com/BU-SENG/foss-project-mustard-brown/blob/main/teaskpageoss.jpg?raw=true" width="31%"/>
+
+</div>
 
 🚀 Features
 👥 User Features
