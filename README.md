@@ -4,6 +4,8 @@ Organize teams, track progress, and ship faster with a beautiful, real-time task
 OpenTask is a full-stack web application that lets teams create, assign, and track tasks in real time. Built for students, startups, and remote teams, it combines the simplicity of Trello with real-time updates, role-based access, email/Google login, notifications, and a clean responsive UI all in one easy-to-deploy package.
 
 
+
+
 <div align="center">
 
 <img src="https://github.com/BU-SENG/foss-project-mustard-brown/blob/main/landingpageOS.jpg?raw=true" width="48%"/>
@@ -15,53 +17,20 @@ OpenTask is a full-stack web application that lets teams create, assign, and tra
 
 </div>
 
-🚀 Features
-👥 User Features
 
-Create and manage tasks with titles, descriptions, and due dates
+## ✨ Key Features
 
-Assign tasks to team members and set priorities
-
-View ongoing, completed, and overdue tasks in a clear dashboard
-
-Receive real-time updates on task changes and progress
-
-Collaborate using task comments and activity logs
-
-Authenticate and manage user accounts securely
-
-👨‍💼 Admin / Team Lead Features
-
-Create teams and invite members via email or username
-
-Monitor task progress across members
-
-Update task statuses and reassign responsibilities
-
-Manage project-wide task boards for multiple teams
-
-📅 Productivity Features
-
-Real-time synchronization across users
-
-Search and filter tasks by status, priority, or assigned member
-
-Notification system for task updates and deadlines
-
-Responsive UI for desktop and mobile
-
-⚙ Additional System Features
-
-Authentication (via Auth provider)
-
-Role-based access for team members and leads
-
-Next.js App Router architecture for efficient routing
+- Real-time task updates (MongoDB Change Streams)
+- Create & assign tasks with priority, due dates, and rich descriptions
+- Team creation
+- Role-based access (Member / Team Lead)
+- Task comments + activity logs
+- Powerful search & filters
+- Email + Google OAuth authentication
+- Fully responsive (mobile + desktop)
 
 
-
-
-🛠 Tech Stack
+## 🛠 Tech Stack
 
 
 | Layer              | Technology                          |
