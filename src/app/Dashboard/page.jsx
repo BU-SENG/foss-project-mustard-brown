@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import DashboardClient from "./DashboardClient";
 
 export default async function DashboardPage() {
+  // Check for authentication token in cookies
   const cookieStore = cookies();
   const token = cookieStore.get("authToken")?.value;
 
