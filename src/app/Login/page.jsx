@@ -175,6 +175,7 @@ export default function Page() {
               <p className="text-red-500 text-xs">{errors.email}</p>
             )}
           </div>
+
           {/* Password */}
           <div className="flex flex-col space-y-1">
             <label className="text-sm">Password</label>
@@ -205,14 +206,11 @@ export default function Page() {
               <p className="text-red-500 text-xs">{errors.password}</p>
             )}
           </div>
+
           <div className="flex w-full items-center justify-end">
-            <Link
-              href={"/forgot-password"}
-              className="text-xs text-blue-500 underline cursor-pointer"
-            >
-              Forgot Password?
-            </Link>
+            <Link href={"/forgot-password"} className="text-xs text-blue-500 underline cursor-pointer">Forgot Password?</Link>
           </div>
+
           {/* Submit Button */}
           <div className="mt-2 w-full">
             <button
@@ -232,6 +230,7 @@ export default function Page() {
               )}
             </button>
           </div>
+
           <div className="w-full text-center mt-2">
             <button
               type="button"
@@ -260,8 +259,8 @@ export default function Page() {
               />
               Sign in with GitHub
             </button>
-          </div>{" "}
-          */}
+          </div> */
+
           {/* Sign Up Link */}
           <div className="w-full text-center mt-4">
             <p className="text-xs text-gray-400">
