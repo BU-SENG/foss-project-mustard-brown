@@ -40,7 +40,7 @@ Responsive UI for desktop and mobile
 
 ⚙ Additional System Features
 
-Authentication (via Firebase/Auth provider)
+Authentication (via Auth provider)
 
 Role-based access for team members and leads
 
@@ -52,15 +52,16 @@ Next.js App Router architecture for efficient routing
 🛠 Tech Stack
 
 
-| Layer              | Technology                                  |
-| ------------------ | ------------------------------------------- |
-| Frontend           | **Next.js (React Framework)**               |
-| Styling            | **Tailwind CSS + PostCSS**                  |
-| Backend / Database | **Firebase / Supabase (Auth, Realtime DB)** |
-| State Management   | **React Context API / Hooks**               |
-| Build Tool         | **Next.js + Vercel Build System**           |
-| Deployment         | **Vercel**                                  |
-| Others             | **Real-time sync, Role-based routing**      |
+| Layer              | Technology                          |
+|-------------------|-------------------------------------|
+| Frontend          | Next.js 14 (App Router)             |
+| Styling           | Tailwind CSS                        |
+| Authentication    | Custom JWT + Google OAuth (googleapis)|
+| Database          | MongoDB + Mongoose                  |
+| Email Service     | Nodemailer (SMTP/Gmail)             |
+| State Management  | React Hooks + Context               |
+| Deployment        | Vercel                              |
+| Others            | SweetAlert2, Axios, React Icons     |
 
 
 
@@ -99,12 +100,13 @@ cd collaborative-task-app
 
 Create a .env.local file in the project root:
 
-NEXT_PUBLIC_API_KEY=your-firebase-api-key
-NEXT_PUBLIC_AUTH_DOMAIN=your-auth-domain
-NEXT_PUBLIC_PROJECT_ID=your-project-id
-NEXT_PUBLIC_STORAGE_BUCKET=your-storage-bucket
-NEXT_PUBLIC_MESSAGING_SENDER_ID=your-sender-id
-NEXT_PUBLIC_APP_ID=your-app-id
+MONGODB_URL="your mongodb url here"
+EMAIL_USER="your email here"
+EMAIL_PASS="your email pass key here"
+NEXT_PUBLIC_BASE_URL="http://localhost:3000"
+JWT_SECRET="your jwt secret here"
+GOOGLE_CLIENT_ID="your google client id here"
+GOOGLE_CLIENT_SECRET="your google client secret here"
 
 
 4. Start the development server: npm run dev
