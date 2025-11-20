@@ -4,6 +4,8 @@ OpenTask is a full-stack web application that lets teams create, assign, and tra
 
 <br><br>
 
+### 📸 OpenTask Screenshots
+
 <div align="center">
 
 <img src="https://github.com/BU-SENG/foss-project-mustard-brown/blob/main/landingpageOS.jpg?raw=true" width="48%"/>
