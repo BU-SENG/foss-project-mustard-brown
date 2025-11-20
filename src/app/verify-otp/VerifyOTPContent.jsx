@@ -1,4 +1,4 @@
-"use client"; // ← This one HAS "use client"
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -14,10 +14,35 @@ export default function VerifyOTPContent() {
   const [isLoading, setIsLoading] = useState(false);
   const inputsRef = useRef([]);
 
+  // ←←← NEW: Timer state
+  const [timer, setTimer] = useState(60);           // 60 seconds countdown
+  const [canResend, setCanResend] = useState(false); // Button disabled at first
+  const intervalRef = useRef(null);
+
   useEffect(() => {
     const e = searchParams.get("email");
     if (e) setEmail(decodeURIComponent(e));
   }, [searchParams]);
+
+  // ←←← NEW: Countdown effect
+  useEffect(() => {
+    // Start countdown immediately when page loads
+    setCanResend(false);
+    setTimer(60);
+
+    intervalRef.current = setInterval(() => {
+      setTimer((prev) => {
+        if (prev <= 1) {
+          clearInterval(intervalRef.current);
+          setCanResend(true);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(intervalRef.current); // Cleanup on unmount
+  }, []);
 
   const handleChange = (e, index) => {
     const value = e.target.value.replace(/\D/g, "").slice(0, 1);
@@ -51,15 +76,15 @@ export default function VerifyOTPContent() {
       Swal.fire({
         icon: "success",
         title: "Verified!",
-        text: "OTP verified successfully.",
+        text: "OTP verified successfully. Redirecting...",
         confirmButtonColor: "#9F00FF",
       });
       setTimeout(() => router.push("/Dashboard"), 2000);
     } catch (err) {
       Swal.fire({
         icon: "error",
-        title: "Verification Failed",
-        text: err.response?.data?.message || "Invalid or expired OTP.",
+        title: "Invalid OTP",
+        text: err.response?.data?.message || "Please try again.",
         confirmButtonColor: "#F2521E",
       });
     } finally {
@@ -68,22 +93,40 @@ export default function VerifyOTPContent() {
   };
 
   const handleResendOTP = async () => {
+    if (!canResend) return; 
+
     setIsLoading(true);
+    setCanResend(false); 
+    setTimer(60);       
+
     try {
       await axios.post("/api/resend-otp", { email });
       Swal.fire({
         icon: "success",
-        title: "OTP Resent",
-        text: "A new OTP has been sent to your email.",
+        title: "OTP Sent!",
+        text: "Check your email for the new code.",
         confirmButtonColor: "#9F00FF",
       });
+
+      // Restart the 60-second countdown
+      intervalRef.current = setInterval(() => {
+        setTimer((prev) => {
+          if (prev <= 1) {
+            clearInterval(intervalRef.current);
+            setCanResend(true);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
     } catch (err) {
       Swal.fire({
         icon: "error",
-        title: "Resend Failed",
-        text: err.response?.data?.message || "Could not resend OTP.",
+        title: "Failed",
+        text: "Could not resend OTP. Try again later.",
         confirmButtonColor: "#F2521E",
       });
+      setCanResend(true); // Allow retry if failed
     } finally {
       setIsLoading(false);
     }
@@ -121,20 +164,32 @@ export default function VerifyOTPContent() {
         <button
           onClick={handleVerify}
           disabled={isLoading || !email}
-          className={`w-full py-3 rounded-lg text-white font-semibold transition-all ${
+          className={`w-full py-3 rounded-lg text-white font-semibold transition-all mb-6 ${
             isLoading || !email
               ? "bg-gray-400 cursor-not-allowed"
-              : "bg-gradient-to-r from-[#9F00FF] to-[#F2521E] hover:opacity-90"
+              : "bg-gradient-to-r from-[#9F00FF] to-[#F2521E] hover:from-[#8700cc] hover:to-[#d14012]"
           }`}
         >
           {isLoading ? "Verifying..." : "Verify OTP"}
         </button>
 
-        <p className="text-center text-sm text-gray-400 mt-6">
+        <p className="text-center text-sm text-gray-400">
           Didn’t get a code?{" "}
-          <button type="button" className="text-[#9F00FF] font-medium hover:underline"
-          onClick={handleResendOTP}>
-            Resend OTP
+          <button
+            type="button"
+            onClick={handleResendOTP}
+            disabled={!canResend || isLoading}
+            className={`font-medium transition-all ${
+              canResend
+                ? "text-[#9F00FF] hover:underline cursor-pointer"
+                : "text-gray-400 cursor-not-allowed"
+            }`}
+          >
+            {canResend ? (
+              "Resend OTP"
+            ) : (
+              <>Resend in {timer}s</>
+            )}
           </button>
         </p>
       </div>

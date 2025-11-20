@@ -216,7 +216,7 @@ export default function Page() {
             <button
               type="submit"
               disabled={isLoading}
-              className={`py-2.5 text-sm font-semibold px-6 w-full rounded-lg flex items-center justify-center gap-2 transition-all duration-500 
+              className={`py-2.5 cursor-pointer text-sm font-semibold px-6 w-full rounded-lg flex items-center justify-center gap-2 transition-all duration-500 
                 ${
                   isLoading
                     ? "opacity-50 cursor-not-allowed bg-gray-300 text-gray-500"
@@ -235,7 +235,7 @@ export default function Page() {
             <button
               type="button"
               className="py-2.5 text-sm font-semibold px-6 w-full rounded-lg flex items-center justify-center gap-2 bg-white border border-gray-300 hover:bg-gray-50 transition-all
-             bg-gradient-to-r from-[#f2521e] to-[#9f00ff] bg-clip-text text-transparent"
+             bg-gradient-to-r from-[#f2521e] to-[#9f00ff] bg-clip-text text-transparent cursor-pointer"
               onClick={() => (window.location.href = "/api/login/google")}
             >
               <img
