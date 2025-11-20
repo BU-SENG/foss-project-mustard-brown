@@ -64,7 +64,9 @@ npm run lint -- --fix
 ```bash
 git add .
 git commit -m "feat: add dark mode toggle"
+
 # or
+
 git commit -m "fix: mobile menu not closing"
 ```
 <br>
