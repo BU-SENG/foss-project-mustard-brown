@@ -144,24 +144,24 @@ Your live app will be at: `https://your-project-name.vercel.app`
 
 ## Contributors – The Amazing Team
 
-Back-End Development
+Back-End Development<br>
 NELSON-NWANONEZE DAVID TOCHUKWU 23/0221<br>
 NELSON-NWANONEZE DAVID TOCHUKWU 23/0221<br>
 NWANGWU ONYEDIKACHUKWU VINCENT 22/0256<br>
 
-UI/UX
+UI/UX<br>
 NGONADI CHINONSO MICHAEL 22/0244<br>
 NWAGBO SOMTOMCHUKWU BILL 22/0020<br>
 
-Documentation
+Documentation<br>
 NWAKWURIBE KAMSIYOCHI DENNIS 22/0037<br>
 
-Front-End Development
+Front-End Development<br>
 NWALUE PRECIOUS SHAWN 22/0291<br>
 NZERIBE CHINANU UZOCHUKWU 22/3286<br>
 NDUBUISI MIRACLE DAVID 22/0250<br>
 
-Database Connection
+Database Connection<br>
 NZEGWU KENECHUKWU ANALIEFO 22/0013
 
 <br>
