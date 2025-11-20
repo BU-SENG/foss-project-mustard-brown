@@ -139,7 +139,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col relative font-poppins">
+    <div className="min-h-screen w-full flex flex-col relative font-poppins py-18">
       <nav
         id="hero"
         className={`fixed top-0 left-0 right-0 flex items-center justify-between px-4 md:px-10 py-3 shadow-lg z-50 bg-white transition-all duration-500 ${
