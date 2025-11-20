@@ -13,7 +13,7 @@ const ActivitySchema = new Schema(
       ref: "User", // Assuming your user model is named 'User'
       required: true,
     },
-    // The type of action performed
+    // The type of action performed.
     action: {
       type: String,
       required: true,
