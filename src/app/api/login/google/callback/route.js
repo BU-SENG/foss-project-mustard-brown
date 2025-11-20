@@ -1,4 +1,3 @@
-// app/api/login/google/callback/route.js
 import { google } from "googleapis";
 import DBconnect from "@/Utils/DBconnect";
 import UserModel from "@/Models/User";
@@ -10,14 +9,12 @@ const oauth2Client = new google.auth.OAuth2(
   `${process.env.NEXT_PUBLIC_BASE_URL}/api/login/google/callback`
 );
 
-// ✓ CORRECT: Use NAMED export "GET" instead of default export
 export async function GET(req) {
   await DBconnect();
-
   const code = req.nextUrl.searchParams.get("code");
 
   if (!code) {
-    return Response.redirect("/Login?error=access_denied");
+    return Response.redirect(`${process.env.NEXT_PUBLIC_BASE_URL}/Login?error=access_denied`);
   }
 
   try {
@@ -27,22 +24,32 @@ export async function GET(req) {
     const oauth2 = google.oauth2({ version: "v2", auth: oauth2Client });
     const { data } = await oauth2.userinfo.get();
 
-    let user = await UserModel.findOne({ email: data.email });
+    // Find or create user WITHOUT requiring password
+    let user = await UserModel.findOne({ 
+      $or: [{ email: data.email }, { googleId: data.id }] 
+    });
 
     if (!user) {
-      user = await new UserModel({
+      user = new UserModel({
         fullName: data.name || data.email.split("@")[0],
         email: data.email,
         googleId: data.id,
-        isVerified: data.verified_email || true,
         avatar: data.picture,
+        isVerified: true,
+        // NO PASSWORD → Google users no need am
       });
+      await user.save();
+    } else if (!user.googleId) {
+      // Existing normal user now signing in with Google → link accounts
+      user.googleId = data.id;
+      user.avatar = data.picture || user.avatar;
       await user.save();
     }
 
     const token = generateAccessToken({ id: user._id });
 
-    const redirectUrl = new URL("/Dashboard", process.env.NEXT_PUBLIC_BASE_URL);
+    // Proper full URL redirect + secure cookie
+    const redirectUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/Dashboard`;
 
     return new Response(
       `<script>
@@ -54,8 +61,11 @@ export async function GET(req) {
         headers: { "Content-Type": "text/html" },
       }
     );
+
   } catch (error) {
-    console.error("Google OAuth Error:", error.message);
-    return Response.redirect("/Login?error=google_failed");
+    console.error("Google OAuth Error:", error.message || error);
+    
+    // FIX: Use full URL here too!
+    return Response.redirect(`${process.env.NEXT_PUBLIC_BASE_URL}/Login?error=google_failed`);
   }
 }
